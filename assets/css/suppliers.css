@@ -1,0 +1,77 @@
+.supplier-page { padding-block: 1.25rem var(--section-space); }
+.supplier-page h1 { font-size: var(--size-page); }
+.supplier-page h1, .directory-card h2 { overflow-wrap: anywhere; }
+.supplier-breadcrumb { display: flex; flex-wrap: wrap; gap: .55rem; margin-bottom: 1rem; color: var(--muted); font-size: .875rem; }
+.supplier-breadcrumb a { color: var(--forest); text-decoration: underline; }
+.supplier-muted { color: var(--muted); font-size: .875rem; }
+.supplier-page > .supplier-muted { margin-top: .4rem; }
+
+.supplier-controls { display: grid; gap: .75rem; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: end; padding: 1rem; margin-top: 1rem; border: 1px solid var(--border); border-radius: var(--radius-card); background: var(--surface); }
+.supplier-controls label { display: grid; gap: .3rem; font-weight: 700; font-size: .875rem; }
+.supplier-controls input, .supplier-controls select { width: 100%; min-width: 0; min-height: var(--target); padding: .45rem .65rem; border: 1px solid var(--leaf); border-radius: var(--radius-button); background: var(--surface); color: var(--text); }
+.supplier-outline { color: var(--forest); border-color: var(--leaf); background: var(--surface); }
+.supplier-outline:hover { background: var(--background); }
+.supplier-controls button { justify-self: start; }
+.supplier-results-bar { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .3rem 1rem; margin-block: .8rem; }
+.supplier-results-bar [role="status"] { font-weight: 700; }
+
+.directory-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--grid-gap); }
+.directory-card, .store-information, .supplier-empty { padding: 1rem; border: 1px solid var(--border); border-radius: var(--radius-card); background: var(--surface); }
+.directory-card { display: flex; flex-direction: column; gap: .75rem; }
+.directory-card header { display: flex; align-items: center; gap: .75rem; }
+
+.directory-card h2 { font-size: 1.125rem; }
+.directory-card dl, .store-information dl { display: grid; gap: .45rem; margin: 0; font-size: .875rem; }
+.directory-card dt, .store-information dt { font-weight: 700; }
+.directory-card dd, .store-information dd { margin: 0; color: var(--muted); }
+.supplier-delivery-note { color: var(--forest); font-size: .875rem; font-weight: 700; }
+.supplier-actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: auto; }
+.supplier-empty p { margin-block: .45rem .75rem; }
+
+.store-header { display: grid; grid-template-columns: minmax(0, 35fr) minmax(0, 65fr); align-items: stretch; min-height: 10.5rem; border: 1px solid var(--border); border-radius: var(--radius-card); background: var(--surface); }
+.store-identity { display: flex; align-items: center; gap: .95rem; min-width: 0; padding: 1rem 1.2rem; border-radius: var(--radius-card) 0 0 var(--radius-card); background: var(--forest); color: var(--surface); }
+.store-identity .merchant-logo { border: 2px solid #dbe9df; }
+.store-identity h1 { font-size: clamp(1.2rem, 1.05rem + .9vw, 1.7rem); margin-block: .15rem .25rem; }
+.fictional-label { font-size: .75rem; font-weight: 700; color: var(--gold); }
+.store-type, .store-identity .merchant-location { color: #f1f6f1; font-size: .875rem; }
+.store-contact { gap: .45rem; margin-top: .55rem; color: var(--forest); background: var(--surface); }
+.store-contact:hover { background: #eff5ef; }
+.store-contact:focus-visible { outline-color: var(--gold); }
+.store-metrics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-content: center; gap: .55rem 1.1rem; padding: .85rem 1.15rem; margin: 0; font-size: .875rem; }
+.store-metrics dt { display: flex; align-items: center; gap: .4rem; color: var(--muted); font-size: .8rem; }
+.store-metrics dt .merchant-icon { color: var(--forest); }
+.store-metrics dd { margin: .08rem 0 0 1.525rem; font-weight: 700; overflow-wrap: anywhere; }
+#store-delivery-status { color: var(--forest); }
+.store-tabs { display: flex; flex-wrap: wrap; gap: 0 .3rem; align-items: stretch; padding-inline: .5rem; margin: .5rem 0 .8rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-card); }
+.store-tabs a { display: inline-flex; align-items: center; min-height: var(--target); padding: .35rem .65rem; border-bottom: 3px solid transparent; font-size: .875rem; font-weight: 700; }
+.store-tabs a:hover { color: var(--forest); }
+.store-tabs [aria-current] { color: var(--forest); border-bottom-color: var(--forest); background: var(--background); }
+.store-tabs a:focus-visible { outline-offset: -3px; }
+.store-shelf + .store-shelf { margin-top: var(--section-space); }
+.store-shelf .section-head a { font-size: .875rem; font-weight: 700; }
+.store-deal-label { width: fit-content; margin-top: .18rem; padding: .1rem .35rem; border-radius: var(--radius-button); color: var(--text); background: var(--gold); font-size: .75rem; font-weight: 700; }
+.store-information { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem 2rem; margin-top: 1rem; }
+.store-information h2 { margin-bottom: .5rem; }
+.store-information h3 { margin-top: .9rem; }
+.store-information p + p { margin-top: .45rem; }
+.store-catalog .supplier-controls { margin-top: .6rem; }
+.store-controls { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) auto; }
+
+@media (max-width: 68rem) { .directory-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 47rem) {
+  .supplier-controls, .store-controls { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .supplier-search { grid-column: 1 / -1; }
+  .directory-grid, .store-information { grid-template-columns: 1fr; }
+}
+@media (max-width: 33rem) {
+  .supplier-controls, .store-controls { grid-template-columns: 1fr; }
+  .store-identity { padding: .75rem; gap: .6rem; }
+  .store-identity .merchant-logo { width: 54px; height: 54px; }
+  .store-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .store-tabs a { padding-inline: .45rem; }
+}
+
+@media (max-width: 56rem) {
+  .store-header { grid-template-columns: 1fr; }
+  .store-identity { border-radius: var(--radius-card) var(--radius-card) 0 0; }
+}

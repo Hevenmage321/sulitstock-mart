@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en-PH">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Review supplier offers and wholesale purchasing estimates in your SulitStock Mart cart.">
+  <title>Shopping Cart | SulitStock Mart</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/messaging.css">
+  <link rel="stylesheet" href="assets/css/cart.css">
+  <script type="module" src="assets/js/cart-page.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <p class="announcement">Philippine wholesale food procurement <span>·</span> Marketplace demo</p>
+    <div class="wrap masthead">
+      <button class="menu-toggle icon-button" id="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation" aria-label="Menu">☰</button>
+      <a class="logo" href="index.html"><img src="assets/images/brand/logo.svg" alt="SulitStock Mart" width="270" height="60"></a>
+      <form class="search" role="search" action="products.html" method="get" id="marketplace-search">
+        <label class="sr-only" for="search">Search products and suppliers</label>
+        <input id="search" name="q" type="search" maxlength="160" placeholder="Search ingredients or suppliers">
+        <button class="button primary" type="submit">Search</button>
+      </form>
+      <div class="location">
+        <label for="buyer-location">Buyer location</label>
+        <select id="buyer-location"></select>
+      </div>
+      <a class="cart" href="cart.html" aria-current="page" aria-label="Cart, 0 supplier offers">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M2 3h3l3 12h11l3-9H6"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
+        <span>Cart</span><span class="cart-count">0</span>
+      </a>
+    </div>
+    <nav id="navigation" class="site-nav" aria-label="Main navigation">
+      <div class="wrap nav-links">
+        <details id="category-menu">
+          <summary>All Categories</summary>
+          <div class="category-menu" id="category-menu-items"></div>
+        </details>
+        <a href="products.html">All Products</a>
+        <a href="suppliers.html">Suppliers</a>
+        <a href="index.html#bulk-deals">Bulk Deals</a>
+        <a href="index.html#how-it-works">How It Works</a>
+        <a href="orders.html">My Orders</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main" class="wrap cart-page" tabindex="-1">
+    <nav class="cart-breadcrumbs" aria-label="Breadcrumb">
+      <ol><li><a href="index.html">Home</a></li><li aria-current="page">Cart</li></ol>
+    </nav>
+    <header class="cart-heading">
+      <h1 id="cart-title" tabindex="-1">Shopping Cart</h1>
+      <a class="button cart-outline" href="products.html">Continue Shopping</a>
+    </header>
+    <p class="cart-warning" id="cart-storage-note" role="status" hidden></p>
+    <p class="sr-only" id="cart-announcement" role="status"></p>
+
+    <section class="cart-panel empty-cart" id="empty-cart" aria-labelledby="empty-title" hidden>
+      <h2 id="empty-title">Your cart is empty</h2>
+      <p>Browse wholesale offers to start your order estimate.</p>
+      <a class="button primary" href="products.html">Continue Shopping</a>
+    </section>
+
+    <div class="cart-layout" id="cart-layout" hidden>
+      <section class="cart-items" aria-label="Cart items by supplier">
+        <div class="cart-panel cart-selection">
+          <label class="cart-check"><input type="checkbox" id="select-all"> Select All</label>
+          <p id="cart-line-count"></p>
+        </div>
+        <div id="cart-groups" class="cart-groups"></div>
+      </section>
+
+      <aside class="cart-panel cart-summary" aria-labelledby="summary-title">
+        <h2 id="summary-title">Order Summary</h2>
+        <p class="cart-muted" id="summary-selection"></p>
+        <dl class="cart-totals" aria-live="polite" aria-atomic="true">
+          <div><dt>Merchandise subtotal</dt><dd id="summary-subtotal">₱0</dd></div>
+          <div><dt>Bulk savings</dt><dd id="summary-savings">₱0</dd></div>
+          <div><dt>Estimated delivery</dt><dd id="cart-delivery">—</dd></div>
+          <div><dt>Estimated payable</dt><dd id="cart-payable">—</dd></div>
+        </dl>
+        <p class="cart-muted">Savings are already reflected in merchandise. Delivery fees are estimates, based on straight-line distances.</p>
+        <p class="cart-warning" id="checkout-warning" role="status" hidden></p>
+        <button class="button primary" id="checkout" type="button" disabled>Proceed to Checkout</button>
+        <p class="cart-muted">Review buyer details, supplier fulfillment, and estimated fees in demo checkout.</p>
+      </aside>
+    </div>
+    <noscript><p class="no-script">Enable JavaScript to view and edit your shopping cart.</p></noscript>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div><img src="assets/images/brand/logo.svg" alt="SulitStock Mart" width="270" height="60"><p>Wholesale food sourcing for Philippine kitchens.</p></div>
+      <nav aria-label="Footer navigation"><a href="products.html">All Products</a><a href="suppliers.html">Suppliers</a><a href="index.html#bulk-deals">Bulk Deals</a><a href="index.html#how-it-works">How It Works</a></nav>
+      <p class="footer-note">Academic demonstration · Simulated orders and payments</p>
+    </div>
+  </footer>
+
+  <template id="cart-group-template">
+    <section class="cart-panel cart-group">
+      <div class="cart-supplier-heading">
+        <div class="cart-check"><input type="checkbox" class="select-supplier"><span class="cart-supplier-name"></span></div>
+        <p>Selected subtotal <strong class="supplier-subtotal">₱0</strong></p>
+      </div>
+      <p class="cart-muted cart-supplier-distance"></p>
+      <div class="cart-group-items"></div>
+      <div class="cart-shipment">
+        <label>Fulfillment <select class="cart-fulfillment"></select></label>
+        <p class="cart-muted cart-delivery-feedback"></p>
+        <p>Estimated delivery <strong class="cart-supplier-fee">—</strong></p>
+        <p>Supplier total <strong class="cart-supplier-total">—</strong></p>
+      </div>
+    </section>
+  </template>
+
+  <template id="cart-item-template">
+    <article class="cart-item">
+      <label class="cart-check cart-item-check"><input type="checkbox" class="select-item"><span class="sr-only"></span></label>
+      <a class="cart-photo"><img width="96" height="72" alt=""><span class="image-fallback" hidden>Photo unavailable</span></a>
+      <div class="cart-item-description">
+        <h3><a class="cart-product-link"></a></h3>
+        <p class="cart-item-supplier cart-muted"></p>
+        <p class="cart-item-stock offer-stock"></p>
+        <p class="cart-item-moq cart-muted"></p>
+      </div>
+      <div class="cart-quantity">
+        <label class="cart-quantity-label">Quantity</label>
+        <input type="number" class="cart-quantity-input" inputmode="decimal">
+        <p class="cart-item-error" hidden></p>
+        <p class="cart-item-tier cart-muted" hidden></p>
+      </div>
+      <dl class="cart-item-costs">
+        <div><dt>Unit price</dt><dd class="cart-unit-price">—</dd></div>
+        <div><dt>Subtotal</dt><dd class="cart-item-subtotal">—</dd></div>
+        <div><dt>Bulk savings</dt><dd class="cart-item-savings">—</dd></div>
+      </dl>
+      <button class="text-button cart-remove" type="button">Remove</button>
+    </article>
+  </template>
+</body>
+</html>

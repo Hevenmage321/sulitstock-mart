@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="brand-name">
+  <title id="brand-name">PALAY JUNCTION MILLING</title>
+  <circle cx="64" cy="64" r="64" fill="#674E23"/>
+  <circle cx="64" cy="64" r="56" fill="none" stroke="#EDD485" stroke-opacity=".52" stroke-width="1.5"/>
+  <g transform="translate(19 2) scale(1.4)" fill="none" stroke="#EDD485" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M26 48l12-31M29 41c-7-2-9-6-8-11 5 2 8 6 8 11zm4-9c-6-3-7-7-6-11 5 2 7 6 6 11zm0 5c7 0 11-3 12-8-6 0-10 3-12 8zm4-10c6-1 9-4 9-8-5 0-8 3-9 8z"/></g>
+  <path d="M43 76h42" stroke="#EDD485" stroke-width="1" opacity=".65"/>
+  <text x="64" y="94" fill="white" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="17" letter-spacing="1.1">PALAY</text>
+  <text x="64" y="107" fill="#EDD485" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="7.5" letter-spacing=".6">JUNCTION MILLING</text>
+</svg>

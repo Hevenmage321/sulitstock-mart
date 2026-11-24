@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en-PH">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Review simulated orders, supplier fulfillment, and order status on SulitStock Mart.">
+  <title>Order Details | SulitStock Mart</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/messaging.css">
+  <link rel="stylesheet" href="assets/css/cart.css">
+  <link rel="stylesheet" href="assets/css/orders.css">
+  <script type="module" src="assets/js/orders-page.js"></script>
+</head>
+<body data-order-view="details">
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <p class="announcement">Philippine wholesale food procurement <span>·</span> Marketplace demo</p>
+    <div class="wrap masthead">
+      <button class="menu-toggle icon-button" id="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation" aria-label="Menu">☰</button>
+      <a class="logo" href="index.html"><img src="assets/images/brand/logo.svg" alt="SulitStock Mart" width="270" height="60"></a>
+      <form class="search" role="search" action="products.html" method="get" id="marketplace-search">
+        <label class="sr-only" for="search">Search products and suppliers</label>
+        <input id="search" name="q" type="search" maxlength="160" placeholder="Search ingredients or suppliers">
+        <button class="button primary" type="submit">Search</button>
+      </form>
+      <div class="location">
+        <label for="buyer-location">Buyer location</label>
+        <select id="buyer-location"></select>
+      </div>
+      <a class="cart" href="cart.html" aria-label="Cart, 0 supplier offers">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M2 3h3l3 12h11l3-9H6"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
+        <span>Cart</span><span class="cart-count">0</span>
+      </a>
+    </div>
+    <nav id="navigation" class="site-nav" aria-label="Main navigation">
+      <div class="wrap nav-links">
+        <details id="category-menu">
+          <summary>All Categories</summary>
+          <div class="category-menu" id="category-menu-items"></div>
+        </details>
+        <a href="products.html">All Products</a>
+        <a href="suppliers.html">Suppliers</a>
+        <a href="index.html#bulk-deals">Bulk Deals</a>
+        <a href="index.html#how-it-works">How It Works</a>
+        <a href="orders.html">My Orders</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main" class="wrap cart-page order-page" tabindex="-1">
+    <nav class="cart-breadcrumbs" aria-label="Breadcrumb">
+      <ol><li><a href="index.html">Home</a></li><li><a href="orders.html">My Orders</a></li><li aria-current="page">Order Details</li></ol>
+    </nav>
+    <header class="order-heading">
+      <h1 id="order-title" tabindex="-1">Order Details</h1>
+      <p id="order-subtitle" class="cart-muted"></p>
+    </header>
+    <p id="order-notice" class="cart-warning" role="status" hidden></p>
+    <div id="order-content"></div>
+    <noscript><p class="no-script">Enable JavaScript to view demo orders.</p></noscript>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div><img src="assets/images/brand/logo.svg" alt="SulitStock Mart" width="270" height="60"><p>Wholesale food sourcing for Philippine kitchens.</p></div>
+      <nav aria-label="Footer navigation"><a href="products.html">All Products</a><a href="suppliers.html">Suppliers</a><a href="index.html#bulk-deals">Bulk Deals</a><a href="index.html#how-it-works">How It Works</a></nav>
+    </div>
+  </footer>
+
+  <dialog id="demo-dialog" aria-labelledby="demo-title" aria-describedby="demo-description">
+    <h2 id="demo-title"></h2>
+    <p id="demo-description"></p>
+    <form method="dialog" class="order-actions">
+      <button class="button cart-outline" value="close" autofocus>Go Back</button>
+      <button class="button primary" id="confirm-action" value="confirm">Confirm</button>
+    </form>
+  </dialog>
+</body>
+</html>

@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en-PH">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SulitStock Mart · Design preview</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--background); color: var(--text); font: var(--size-body)/var(--leading-body) var(--font-body); }
+    h1, h2, h3, p, figure { margin: 0; }
+    h1, h2, h3 { font-family: var(--font-heading); line-height: var(--leading-heading); }
+    h1 { font-size: var(--size-page); }
+    h2 { font-size: var(--size-section); }
+    h3 { font-size: var(--size-product); }
+    img { display: block; max-width: 100%; height: auto; }
+    :focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+    .wrap { width: min(calc(100% - 2rem), var(--content-max)); margin-inline: auto; }
+    .guide { max-width: 74rem; padding-block: var(--section-space); }
+    .guide > section + section { margin-top: var(--section-space); }
+    .section-title { margin-bottom: var(--space-4); }
+    .small { font-size: var(--size-body-small); color: var(--muted); }
+    .button, input { min-height: var(--target); border-radius: var(--radius-button); font: inherit; }
+    .button { border: 1px solid var(--control-border); padding: .45rem .75rem; background: var(--surface); color: var(--forest); font-weight: 700; text-align: center; }
+    .button:hover { background: var(--secondary-hover); }
+    .button:active { background: var(--secondary-active); }
+    .primary { background: var(--forest); border-color: var(--forest); color: var(--surface); }
+    .primary:hover { background: var(--primary-hover); }
+    .primary:active { background: var(--primary-active); }
+    .button:disabled:not([data-preview-control]) { background: var(--disabled); color: var(--disabled-text); border-color: var(--border); }
+    input { width: 100%; min-width: 0; padding-inline: var(--space-3); background: var(--surface); color: var(--text); border: 1px solid var(--control-border); }
+    input::placeholder { color: var(--muted); }
+    .header { background: var(--surface); border-bottom: 1px solid var(--border); }
+    .announce { background: var(--forest); color: var(--surface); text-align: center; padding: var(--space-1) var(--space-3); font-size: var(--size-body-small); }
+    .header-main { display: grid; grid-template-columns: 11rem minmax(0, 1fr) auto auto; grid-template-areas: 'logo search location cart'; align-items: center; gap: var(--space-4); padding-block: var(--space-3); }
+    .header-main img { grid-area: logo; }
+    .header-main .search { grid-area: search; }
+    .location { grid-area: location; }
+    .cart-indicator { grid-area: cart; }
+    .mobile-menu { grid-area: menu; }
+    .search { display: flex; gap: var(--space-2); }
+    .nav { border-top: 1px solid var(--border); }
+    .nav .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-6); padding-block: var(--space-2); font-weight: 700; }
+    .mobile-menu { display: none; }
+    .panel { min-width: 0; padding: var(--space-5); background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-card); }
+    .brand { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: var(--space-4); background: var(--success-bg); border-color: var(--secondary-active); padding: clamp(1rem, 4vw, 2.5rem); }
+    .brand h1 { margin-bottom: var(--space-2); }
+    .brand img { width: 16rem; }
+    .tagline { color: var(--forest); font-family: var(--font-heading); font-weight: 800; margin-top: var(--space-2); }
+    .swatches, .categories, .samples, .type-grid { display: grid; gap: var(--grid-gap); }
+    .swatches { grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr)); }
+    .swatch { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-card); overflow: hidden; }
+    .swatch-sample { height: 3rem; background: var(--swatch); border-bottom: 1px solid var(--border); }
+    .swatch figcaption { padding: var(--space-2); font-size: var(--size-body-small); }
+    .swatch code { display: block; color: var(--muted); }
+    .type-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); }
+    .type-grid p + p { margin-top: var(--space-2); }
+    .hero-type { font: 700 var(--size-hero)/1.2 var(--font-heading); }
+    .page-type { font: 700 var(--size-page)/1.2 var(--font-heading); }
+    .section-type { font: 700 var(--size-section)/1.2 var(--font-heading); }
+    .product-type { font: 600 var(--size-product)/1.2 var(--font-heading); }
+    .categories { grid-template-columns: repeat(auto-fit, minmax(8.25rem, 1fr)); }
+    .category { text-align: center; font-size: var(--size-body-small); font-weight: 700; padding: var(--space-3); }
+    .category svg { display: block; width: 2.25rem; height: 2.25rem; margin: 0 auto var(--space-2); color: var(--forest); }
+    .samples { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .offer-card { display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-3); overflow-wrap: anywhere; }
+    .placeholder { display: grid; place-items: center; text-align: center; padding: var(--space-2); background: var(--background); border: 1px dashed var(--control-border); border-radius: var(--radius-card); font-size: var(--size-body-small); color: var(--muted); }
+    .offer-image { aspect-ratio: 4 / 3; }
+    .offer-gallery { max-width: 44rem; }
+    .price { color: var(--forest); font: 700 var(--size-price)/1.25 var(--font-heading); font-variant-numeric: tabular-nums; }
+    .price small { font-size: var(--size-body-small); }
+    .card-actions { display: grid; gap: var(--space-2); margin-top: auto; padding-top: var(--space-2); }
+    .stack { display: grid; align-content: start; gap: var(--grid-gap); }
+    .row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); }
+    .between { justify-content: space-between; }
+    .status { padding: var(--space-2); border-radius: var(--radius-button); font-size: var(--size-body-small); }
+    .success { background: var(--success-bg); color: var(--success); }
+    .warning { background: var(--warning-bg); color: var(--warning); }
+    .error { background: var(--error-bg); color: var(--error); }
+    .savings { background: var(--gold); color: var(--text); }
+    table { border-collapse: collapse; width: 100%; text-align: left; font-variant-numeric: tabular-nums; }
+    th, td { border-bottom: 1px solid var(--border); padding: var(--space-2); }
+    .stepper { display: inline-grid; grid-template-columns: var(--target) minmax(3.5rem, 4.5rem) var(--target); gap: var(--space-1); }
+    .stepper input { text-align: center; }
+    .cart-line { display: grid; grid-template-columns: 4.5rem minmax(0, 1fr); gap: var(--space-3); }
+    .cart-line .placeholder { min-height: 4.5rem; align-self: start; }
+    .chat { display: grid; gap: var(--space-3); }
+    .chat-header { padding-bottom: var(--space-3); border-bottom: 1px solid var(--border); }
+    .icon-button { min-width: var(--target); }
+    .bubble { padding: var(--space-2) var(--space-3); border-radius: var(--radius-card); max-width: 90%; font-size: var(--size-body-small); background: var(--background); }
+    .bubble.buyer { justify-self: end; background: var(--success-bg); }
+    .footer { border-top: 1px solid var(--border); background: var(--surface); padding-block: var(--space-6); }
+    @media (max-width: 53rem) {
+      .header-main { grid-template-columns: auto minmax(0, 1fr) auto; grid-template-areas: 'menu logo cart' 'search search search' 'location location location'; gap: var(--space-2); }
+      .header-main img { width: 10rem; }
+      .mobile-menu { display: inline-block; }
+      .nav .wrap { gap: var(--space-2) var(--space-3); font-size: var(--size-body-small); }
+    }
+    @media (max-width: 40rem) {
+      .brand, .samples:not(.offer-gallery) { grid-template-columns: 1fr; }
+      .brand img { width: 12rem; }
+    }
+    @media (max-width: 23.25rem) {
+      .offer-gallery { grid-template-columns: 1fr; }
+      .cart-line { grid-template-columns: 1fr; }
+      .cart-line .placeholder { width: 4.5rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <p class="announce">Philippine wholesale procurement · Demonstration</p>
+    <div class="header-main wrap">
+      <span class="button mobile-menu">Menu</span>
+      <img src="assets/images/brand/logo.svg" width="270" height="60" alt="SulitStock Mart">
+      <div class="search" role="search">
+        <input type="search" aria-label="Search products and suppliers" placeholder="Search products and suppliers" readonly tabindex="-1">
+        <button type="button" class="button primary" disabled data-preview-control>Search</button>
+      </div>
+      <span class="button location">Buyer location · Quezon City ▾</span>
+      <span class="button cart-indicator">Cart · 2 offers</span>
+    </div>
+    <nav class="nav" aria-label="Marketplace navigation concept">
+      <div class="wrap">
+        <span class="button">All Categories ▾</span><span>All Products</span><span>Suppliers</span><span>Bulk Deals</span><span>How It Works</span>
+      </div>
+    </nav>
+  </header>
+
+  <main class="guide wrap">
+    <section class="panel brand" aria-labelledby="preview-title">
+      <div>
+        <h1 id="preview-title">SulitStock Mart design preview</h1>
+        <p>Visual samples for a Philippine food procurement marketplace. Example controls and offers are demonstrations.</p>
+      </div>
+      <div>
+        <img src="assets/images/brand/logo.svg" width="270" height="60" alt="SulitStock Mart">
+        <p class="tagline">Buy more. Spend less.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="palette">
+      <h2 id="palette" class="section-title">Color palette</h2>
+      <div class="swatches">
+        <figure class="swatch"><div class="swatch-sample" style="--swatch:var(--forest)"></div><figcaption>Forest <code>#245C43</code></figcaption></figure>
+        <figure class="swatch"><div class="swatch-sample" style="--swatch:var(--leaf)"></div><figcaption>Leaf <code>#71987C</code></figcaption></figure>
+        <figure class="swatch"><div class="swatch-sample" style="--swatch:var(--gold)"></div><figcaption>Harvest gold <code>#E9B949</code></figcaption></figure>
+        <figure class="swatch"><div class="swatch-sample" style="--swatch:var(--background)"></div><figcaption>Background <code>#F5F7F4</code></figcaption></figure>
+        <figure class="swatch"><div class="swatch-sample" style="--swatch:var(--surface)"></div><figcaption>Surface <code>#FFFFFF</code></figcaption></figure>
+        <figure class="swatch"><div class="swatch-sample" style="--swatch:var(--text)"></div><figcaption>Text <code>#26332B</code></figcaption></figure>
+        <figure class="swatch"><div class="swatch-sample" style="--swatch:var(--muted)"></div><figcaption>Muted <code>#647168</code></figcaption></figure>
+        <figure class="swatch"><div class="swatch-sample" style="--swatch:var(--border)"></div><figcaption>Border <code>#DFE5DF</code></figcaption></figure>
+      </div>
+    </section>
+
+    <section aria-labelledby="typography">
+      <h2 id="typography" class="section-title">Typography</h2>
+      <div class="panel type-grid">
+        <div>
+          <p class="small">Manrope · headings</p>
+          <p class="hero-type">Shop wholesale ingredients</p>
+          <p class="page-type">Product catalog</p>
+          <p class="section-type">Fresh meat and poultry</p>
+        </div>
+        <div>
+          <p class="small">DM Sans · body and controls</p>
+          <p class="product-type">Chicken breast fillet</p>
+          <p class="price">₱165–₱190 <small>/ kg</small></p>
+          <p>Compare prices and minimum orders from local suppliers.</p>
+          <p class="small">San Isidro Provisions · Quezon City</p>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="categories">
+      <h2 id="categories" class="section-title">Category navigation</h2>
+      <div class="categories">
+        <div class="panel category"><svg aria-hidden="true" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 23C5 13 14 7 23 8c9 1 10 13 3 17-6 4-15 4-17-2Z"/><path d="M14 21c-2-4 3-8 7-7 5 1 3 6-1 7-3 1-5 2-6 0Z"/></svg>Meat and poultry</div>
+        <div class="panel category"><svg aria-hidden="true" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 18c6-9 14-9 21 0l6-5v10l-6-5c-7 9-15 9-21 0Z"/><circle cx="12" cy="17" r="1" fill="currentColor"/></svg>Seafood</div>
+        <div class="panel category"><svg aria-hidden="true" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 29V13m0 8C7 22 7 14 6 9c8 1 12 4 12 12Zm0-3c1-8 5-11 12-12-1 8-4 13-12 12Z"/></svg>Fresh produce</div>
+        <div class="panel category"><svg aria-hidden="true" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 18h22a11 11 0 0 1-22 0Zm5 11h12M11 15l3-4m3 4 3-5m3 5 3-4"/></svg>Rice and grains</div>
+        <div class="panel category"><svg aria-hidden="true" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 5h8v7l4 6v12H10V18l4-6Zm-4 15h16m-13 6h10"/></svg>Oils and seasonings</div>
+      </div>
+    </section>
+
+    <section aria-labelledby="offers">
+      <h2 id="offers" class="section-title">Comparable supplier offers</h2>
+      <div class="samples offer-gallery">
+        <article class="panel offer-card">
+          <div class="placeholder offer-image">Chicken breast photo placeholder</div>
+          <h3>Chicken breast fillet</h3>
+          <p class="price">₱165–₱190 <small>/ kg</small></p>
+          <p class="small">Minimum order 10 kg</p>
+          <p><strong>San Isidro Provisions</strong><br><span class="small">Quezon City · approx. 6 km straight-line</span></p>
+          <div class="card-actions"><button type="button" class="button primary" disabled data-preview-control aria-label="Add to cart from San Isidro Provisions">Add to Cart</button><button type="button" class="button" disabled data-preview-control aria-label="Contact San Isidro Provisions">Contact Supplier</button></div>
+        </article>
+        <article class="panel offer-card">
+          <div class="placeholder offer-image">Chicken breast photo placeholder</div>
+          <h3>Chicken breast fillet</h3>
+          <p class="price">₱172–₱198 <small>/ kg</small></p>
+          <p class="small">Minimum order 5 kg</p>
+          <p><strong>Marikina Cold Supply</strong><br><span class="small">Marikina · approx. 11 km straight-line</span></p>
+          <div class="card-actions"><button type="button" class="button primary" disabled data-preview-control aria-label="Add to cart from Marikina Cold Supply">Add to Cart</button><button type="button" class="button" disabled data-preview-control aria-label="Contact Marikina Cold Supply">Contact Supplier</button></div>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="purchase">
+      <h2 id="purchase" class="section-title">Purchasing components</h2>
+      <div class="samples">
+        <article class="panel stack">
+          <h3 id="pricing-title">Wholesale pricing</h3>
+          <table aria-labelledby="pricing-title">
+            <thead><tr><th scope="col">Quantity</th><th scope="col">Price per kg</th></tr></thead>
+            <tbody><tr><td>10–49 kg</td><td>₱190.00</td></tr><tr class="success"><td>50–99 kg · Current</td><td>₱175.00</td></tr><tr><td>100 kg and up</td><td>₱165.00</td></tr></tbody>
+          </table>
+          <div class="row"><button type="button" class="button primary" disabled data-preview-control>Primary action</button><button type="button" class="button" disabled data-preview-control>Secondary action</button><button type="button" class="button" disabled>Out of stock</button></div>
+          <div class="row"><span class="status success">Added to cart</span><span class="status warning">Low stock</span><span class="status error">Minimum order is 10 kg</span><span class="status savings">Bulk savings</span></div>
+        </article>
+        <article class="panel stack">
+          <h3>Quantity selector</h3>
+          <label class="small" for="sample-qty">Quantity in kilograms · Minimum 10 kg</label>
+          <div class="stepper"><button type="button" class="button" aria-label="Decrease quantity" disabled data-preview-control>−</button><input id="sample-qty" value="50" inputmode="numeric" readonly tabindex="-1"><button type="button" class="button" aria-label="Increase quantity" disabled data-preview-control>+</button></div>
+          <p class="small">Current tier ₱175.00 per kg · Add 50 kg for the next tier</p>
+          <div class="row between"><strong>Subtotal</strong><strong>₱8,750.00</strong></div>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="cart-chat">
+      <h2 id="cart-chat" class="section-title">Cart and supplier chat</h2>
+      <div class="samples">
+        <article class="panel stack">
+          <h3>Cart item</h3>
+          <p><strong>San Isidro Provisions</strong></p>
+          <div class="cart-line">
+            <div class="placeholder">Photo</div>
+            <div class="stack">
+              <div><strong>Chicken breast fillet</strong><p class="small">Minimum order 10 kg · ₱175.00/kg</p></div>
+              <div class="stepper"><button type="button" class="button" aria-label="Decrease cart quantity" disabled data-preview-control>−</button><input aria-label="Cart quantity in kilograms" value="50" readonly tabindex="-1"><button type="button" class="button" aria-label="Increase cart quantity" disabled data-preview-control>+</button></div>
+              <div class="row between"><strong>₱8,750.00</strong><button type="button" class="button" disabled data-preview-control>Remove</button></div>
+            </div>
+          </div>
+          <div class="row between"><span class="small">Supplier subtotal</span><strong>₱8,750.00</strong></div>
+        </article>
+        <article class="panel chat">
+          <header class="row between chat-header">
+            <div><h3>San Isidro Provisions</h3><p class="small">Simulated AI supplier representative</p></div>
+            <div class="row"><button type="button" class="button icon-button" aria-label="Minimize chat" disabled data-preview-control>−</button><button type="button" class="button icon-button" aria-label="Close chat" disabled data-preview-control>×</button></div>
+          </header>
+          <p class="small">Chicken breast fillet</p>
+          <p class="bubble buyer"><strong>You</strong><br>What is the price at 50 kg?</p>
+          <p class="bubble"><strong>Simulated representative</strong><br>The demo price for 50–99 kg is ₱175 per kg.</p>
+          <div class="row"><button type="button" class="button" disabled data-preview-control>Ask about stock</button><button type="button" class="button" disabled data-preview-control>Ask about delivery</button></div>
+          <div class="search"><input aria-label="Message to the simulated supplier" placeholder="Ask about this offer" readonly tabindex="-1"><button type="button" class="button primary" disabled data-preview-control>Send</button></div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer"><div class="wrap small">SulitStock Mart · Phase 2 design preview</div></footer>
+</body>
+</html>

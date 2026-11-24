@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en-PH">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Review selected supplier offers and simulated delivery estimates on SulitStock Mart.">
+  <title>Checkout | SulitStock Mart</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/messaging.css">
+  <link rel="stylesheet" href="assets/css/cart.css">
+  <link rel="stylesheet" href="assets/css/checkout.css">
+  <script type="module" src="assets/js/checkout-page.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <p class="announcement">Philippine wholesale food procurement <span>·</span> Marketplace demo</p>
+    <div class="wrap masthead">
+      <button class="menu-toggle icon-button" id="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation" aria-label="Menu">☰</button>
+      <a class="logo" href="index.html"><img src="assets/images/brand/logo.svg" alt="SulitStock Mart" width="270" height="60"></a>
+      <form class="search" role="search" action="products.html" method="get" id="marketplace-search">
+        <label class="sr-only" for="search">Search products and suppliers</label>
+        <input id="search" name="q" type="search" maxlength="160" placeholder="Search ingredients or suppliers">
+        <button class="button primary" type="submit">Search</button>
+      </form>
+      <div class="location">
+        <label for="buyer-location">Buyer location</label>
+        <select id="buyer-location"></select>
+      </div>
+      <a class="cart" href="cart.html" aria-label="Cart, 0 supplier offers">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M2 3h3l3 12h11l3-9H6"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
+        <span>Cart</span><span class="cart-count">0</span>
+      </a>
+    </div>
+    <nav id="navigation" class="site-nav" aria-label="Main navigation">
+      <div class="wrap nav-links">
+        <details id="category-menu">
+          <summary>All Categories</summary>
+          <div class="category-menu" id="category-menu-items"></div>
+        </details>
+        <a href="products.html">All Products</a>
+        <a href="suppliers.html">Suppliers</a>
+        <a href="index.html#bulk-deals">Bulk Deals</a>
+        <a href="index.html#how-it-works">How It Works</a>
+        <a href="orders.html">My Orders</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main" class="wrap cart-page checkout-page" tabindex="-1">
+    <nav class="cart-breadcrumbs" aria-label="Breadcrumb">
+      <ol><li><a href="index.html">Home</a></li><li><a href="cart.html">Cart</a></li><li aria-current="page">Checkout</li></ol>
+    </nav>
+    <header class="cart-heading">
+      <h1>Checkout</h1>
+      <a class="button cart-outline" href="cart.html">Back to Cart</a>
+    </header>
+    <p class="cart-warning" id="checkout-status" role="status" tabindex="-1" hidden></p>
+    <section class="cart-panel empty-cart" id="checkout-empty" hidden>
+      <h2>No offers selected</h2>
+      <p>Select the offers you want to check out in your cart.</p>
+      <a class="button primary" href="cart.html">Back to Cart</a>
+    </section>
+
+    <form class="cart-layout checkout-layout" id="checkout-form" novalidate hidden>
+      <div class="checkout-main">
+        <section aria-labelledby="fulfillment-title">
+          <h2 id="fulfillment-title">Review Your Order</h2>
+          <div class="cart-groups" id="checkout-groups"></div>
+        </section>
+
+        <section class="cart-panel" aria-labelledby="buyer-title">
+          <h2 id="buyer-title">Delivery and Buyer Information</h2>
+          <p class="cart-muted">Use sample buyer details. Street address and barangay are required for delivery.</p>
+          <div class="buyer-fields">
+            <label>Business or restaurant name <input name="business" autocomplete="organization" maxlength="120" required></label>
+            <label>Contact person <input name="contact" autocomplete="name" maxlength="100" required></label>
+            <label>Contact number <input name="phone" type="tel" autocomplete="tel" maxlength="26" required></label>
+            <label>Email address <input name="email" type="email" autocomplete="email" maxlength="180" required></label>
+            <label>Street address <input name="address" autocomplete="street-address" maxlength="240"></label>
+            <label>Barangay <input name="barangay" maxlength="120"></label>
+            <label class="buyer-full">City or municipality <select name="city" id="checkout-city" aria-describedby="coverage-help"></select></label>
+            <p class="buyer-full cart-muted" id="coverage-help">This destination also updates the buyer location in the marketplace.</p>
+            <details class="buyer-full checkout-instructions"><summary>Additional delivery instructions <span class="cart-muted">(optional)</span></summary><label><span class="sr-only">Delivery instructions</span><textarea name="instructions" rows="2" maxlength="500"></textarea></label></details>
+            <label class="buyer-full checkout-invoice"><input type="checkbox" name="invoice"> Request sales invoice</label>
+          </div>
+        </section>
+
+        <fieldset class="cart-panel payment-panel">
+          <legend>Payment Method</legend>
+          <p class="cart-muted">Choose a payment method for the preview.</p>
+          <div class="payment-methods">
+            <label class="payment-card"><input type="radio" name="payment" value="cod" required><span aria-hidden="true">💵</span><strong>Cash on Delivery</strong></label>
+            <label class="payment-card"><input type="radio" name="payment" value="gcash"><span aria-hidden="true">📱</span><strong>GCash</strong></label>
+            <label class="payment-card"><input type="radio" name="payment" value="bank-transfer"><span aria-hidden="true">🏦</span><strong>Bank Transfer</strong></label>
+          </div>
+        </fieldset>
+      </div>
+
+      <aside class="cart-panel cart-summary checkout-summary" aria-labelledby="summary-title">
+        <h2 id="summary-title">Order Summary</h2>
+        <dl class="cart-totals" aria-live="polite" aria-atomic="true">
+          <div><dt>Merchandise subtotal</dt><dd id="checkout-merchandise">—</dd></div>
+          <div><dt>Total wholesale savings</dt><dd id="checkout-savings">—</dd></div>
+          <div class="checkout-delivery-breakdown"><dt>Supplier delivery fees</dt><dd><ul id="supplier-fees"></ul></dd></div>
+          <div><dt>Total estimated delivery</dt><dd id="checkout-delivery">—</dd></div>
+          <div class="checkout-payable"><dt>Final payable amount</dt><dd id="checkout-payable">—</dd></div>
+        </dl>
+        <p class="cart-muted">Merchandise already reflects wholesale savings. Delivery fees are estimates based on straight-line distance, available weight data, and the selected method.</p>
+        <button class="button primary" id="place-order" type="submit">Place Order</button>
+        <p class="cart-muted">Use sample details. Orders, inventory, payments, and delivery are simulated.</p>
+      </aside>
+    </form>
+    <noscript><p class="no-script">Enable JavaScript to review checkout.</p></noscript>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div><img src="assets/images/brand/logo.svg" alt="SulitStock Mart" width="270" height="60"><p>Wholesale food sourcing for Philippine kitchens.</p></div>
+      <nav aria-label="Footer navigation"><a href="products.html">All Products</a><a href="suppliers.html">Suppliers</a><a href="index.html#bulk-deals">Bulk Deals</a><a href="index.html#how-it-works">How It Works</a></nav>
+    </div>
+  </footer>
+
+  <template id="checkout-group-template">
+    <section class="cart-panel checkout-group">
+      <header class="checkout-supplier-heading">
+        <h3 class="checkout-supplier-name"></h3>
+        <p class="cart-muted checkout-supplier-location"></p>
+      </header>
+      <div class="checkout-lines"></div>
+      <p class="supplier-checkout-subtotal"><span>Supplier merchandise subtotal</span> <strong></strong></p>
+      <div class="fulfillment-details">
+        <label class="fulfillment-label">Fulfillment method</label>
+        <select class="fulfillment-select" required></select>
+        <p class="cart-muted supplier-schedule"></p>
+        <p class="cart-muted supplier-coverage"></p>
+        <p class="fulfillment-feedback" aria-live="polite"></p>
+      </div>
+    </section>
+  </template>
+  <template id="checkout-line-template">
+    <div class="checkout-line">
+      <div class="checkout-product-cell">
+        <div class="checkout-thumbnail"><img width="64" height="48" alt=""><span class="image-fallback" hidden>No photo</span></div>
+        <a class="checkout-product"></a>
+      </div>
+      <p class="cart-muted checkout-line-price"></p>
+      <strong class="checkout-line-subtotal"></strong>
+    </div>
+  </template>
+</body>
+</html>

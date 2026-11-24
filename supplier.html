@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en-PH">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Browse fictional Philippine food-service suppliers and their wholesale offers.">
+  <title>Supplier Storefront | SulitStock Mart</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/messaging.css">
+  <link rel="stylesheet" href="assets/css/suppliers.css">
+  <script type="module">
+    import('./assets/js/suppliers-page.js').catch(error => {
+      document.getElementById('storefront').hidden = true;
+      document.getElementById('store-load-error').hidden = false;
+      console.error('Could not initialize supplier storefront', error);
+    });
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <p class="announcement">Philippine wholesale food procurement <span>·</span> Marketplace demo</p>
+    <div class="wrap masthead">
+      <button class="menu-toggle icon-button" id="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation" aria-label="Menu">☰</button>
+      <a class="logo" href="index.html"><img src="assets/images/brand/logo.svg" alt="SulitStock Mart" width="270" height="60"></a>
+      <form class="search" role="search" action="products.html" method="get" id="marketplace-search">
+        <label class="sr-only" for="search">Search products and suppliers</label>
+        <input id="search" name="q" type="search" maxlength="160" placeholder="Search ingredients or suppliers">
+        <button class="button primary" type="submit">Search</button>
+      </form>
+      <div class="location">
+        <label for="buyer-location">Buyer location</label>
+        <select id="buyer-location"></select>
+      </div>
+      <a class="cart" href="cart.html" aria-label="Cart, 0 supplier offers">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M2 3h3l3 12h11l3-9H6"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
+        <span>Cart</span><span class="cart-count">0</span>
+      </a>
+    </div>
+    <nav id="navigation" class="site-nav" aria-label="Main navigation">
+      <div class="wrap nav-links">
+        <details id="category-menu">
+          <summary>All Categories</summary>
+          <div class="category-menu" id="category-menu-items"></div>
+        </details>
+        <a href="products.html">All Products</a>
+        <a href="suppliers.html" aria-current="page">Suppliers</a>
+        <a href="index.html#bulk-deals">Bulk Deals</a>
+        <a href="index.html#how-it-works">How It Works</a>
+        <a href="orders.html">My Orders</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main" class="wrap supplier-page" tabindex="-1">
+    <nav class="supplier-breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><a href="suppliers.html">Suppliers</a><span id="store-crumb" aria-current="page">Supplier</span></nav>
+    <section id="missing-supplier" class="supplier-empty" hidden>
+      <h1>Supplier not found</h1><p>Choose a supplier from the directory.</p><a class="button primary" href="suppliers.html">Browse Suppliers</a>
+    </section>
+    <section id="store-load-error" class="supplier-empty" hidden role="alert">
+      <h1>Supplier storefront could not load</h1>
+      <p>Reload this page or choose a supplier from the directory.</p>
+      <a class="button primary" href="suppliers.html">Browse Suppliers</a>
+    </section>
+    <div id="storefront" hidden>
+      <header class="store-header">
+        <div class="store-identity">
+          <img id="store-image" class="merchant-logo" alt="" width="76" height="76">
+          <div>
+            <p class="fictional-label">Fictional demo supplier</p>
+            <h1 id="store-name"></h1>
+            <p class="store-type" id="store-type"></p>
+            <p class="merchant-location"><svg class="merchant-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg><span id="store-location"></span></p>
+            <button class="button store-contact" type="button" data-demo="contact"><svg class="merchant-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.3 8.3 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.3 8.3 0 0 1-3.8-.9L3 21l1.9-5.7a8.3 8.3 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.3 8.3 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8Z"/></svg>Chat with Supplier</button>
+          </div>
+        </div>
+        <dl class="store-metrics">
+          <div><dt><svg class="merchant-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5v8l-9 5-9-5V8Zm0 9 9-4m-9 4L3 8m9 4v9"/></svg>Products</dt><dd id="store-total"></dd></div>
+          <div><dt><svg class="merchant-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Delivery lead time</dt><dd id="store-lead"></dd></div>
+          <div><dt><svg class="merchant-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>Distance from buyer</dt><dd id="store-distance"></dd></div>
+          <div><dt><svg class="merchant-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>Operating hours</dt><dd id="store-hours"></dd></div>
+          <div><dt><svg class="merchant-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 5h14v12H1zM15 9h4l3 4v4h-7"/><circle cx="5" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg>Fulfillment</dt><dd id="store-methods"></dd></div>
+          <div><dt><svg class="merchant-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>Delivery availability</dt><dd id="store-delivery-status"></dd></div>
+        </dl>
+      </header>
+      <nav id="store-tabs" class="store-tabs" aria-label="Shop sections"></nav>
+      <div id="store-home">
+        <section class="store-shelf" aria-labelledby="store-featured-title">
+          <div class="section-head"><h2 id="store-featured-title">Featured Products</h2><a class="supplier-link" href="#all-products">Shop all products</a></div>
+          <div class="offer-grid" id="store-featured"></div>
+          <p id="store-featured-empty" class="supplier-muted" hidden>No products currently meet their minimum order stock.</p>
+        </section>
+        <section class="store-shelf" aria-labelledby="store-deals-title">
+          <div class="section-head"><h2 id="store-deals-title">Wholesale Deals</h2><p>Savings apply at qualifying quantities.</p></div>
+          <div class="offer-grid" id="store-deals"></div>
+          <p id="store-deals-empty" class="supplier-muted" hidden>No wholesale discounts are currently reachable with available stock.</p>
+        </section>
+      </div>
+      <section id="store-about" class="store-information" aria-labelledby="about-supplier" hidden>
+        <div><h2 id="about-supplier">About this supplier</h2><p id="store-description"></p><h3>Wholesale purchasing</h3><p id="store-policy"></p><p>Minimum quantities and price breaks are listed per offer. Wholesale tiers apply to the full quantity once reached.</p></div>
+        <div><h2>Fulfillment and coverage</h2><dl id="store-facts"></dl></div>
+      </section>
+      <section id="store-catalog" class="store-catalog" aria-labelledby="store-products" hidden>
+        <h2 id="store-products">Supplier catalog</h2>
+        <form id="supplier-filters" class="supplier-controls store-controls" role="search" aria-label="Search this supplier’s catalog">
+          <label>Search this supplier’s products<input name="q" type="search" maxlength="160" placeholder="Ingredient or product name"></label>
+          <label id="store-category-filter">Product category<select name="category"><option value="">All categories</option></select></label>
+          <button class="button supplier-outline" type="reset">Clear filters</button>
+        </form>
+        <div class="supplier-results-bar"><p id="supplier-count" role="status"></p><p id="distance-note" class="supplier-muted"></p></div>
+        <div class="offer-grid" id="supplier-results"></div>
+        <section id="supplier-empty" class="supplier-empty" hidden><h3>No matching offers</h3><p>Try another search or select a different category.</p></section>
+      </section>
+    </div>
+    <noscript><p>Enable JavaScript to view this supplier and its offers.</p></noscript>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div><img src="assets/images/brand/logo.svg" alt="SulitStock Mart" width="270" height="60"><p>Wholesale food sourcing for Philippine kitchens.</p></div>
+      <nav aria-label="Footer navigation"><a href="products.html">All Products</a><a href="suppliers.html">Suppliers</a><a href="index.html#bulk-deals">Bulk Deals</a><a href="index.html#how-it-works">How It Works</a></nav>
+      <p class="footer-note">Academic demonstration · Simulated orders and payments</p>
+    </div>
+  </footer>
+
+  <template id="offer-template">
+    <article class="offer">
+      <a class="offer-photo"><img width="360" height="270" alt=""><span class="image-fallback" hidden>Photo unavailable</span></a>
+      <div class="offer-body">
+        <h3><a class="text-button offer-name"></a></h3>
+        <p class="offer-price"><strong></strong> <span class="offer-unit"></span></p>
+        <p class="offer-minimum"></p>
+        <div class="offer-supplier"><strong></strong><p><span class="offer-city"></span> <span aria-hidden="true">·</span> <span class="offer-distance"></span></p></div>
+        <div class="offer-actions">
+          <a class="button primary" data-review-offer>Add to Cart</a>
+          <button class="text-button contact" type="button" data-demo="contact">Contact Supplier</button>
+        </div>
+      </div>
+    </article>
+  </template>
+</body>
+</html>

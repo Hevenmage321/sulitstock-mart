@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 270 60" role="img" aria-labelledby="title">
+  <title id="title">SulitStock Mart</title>
+  <path fill="#245C43" d="M5 19 28 10l23 9v25L28 54 5 44z"/>
+  <path fill="none" stroke="#fff" stroke-width="2.5" stroke-linejoin="round" d="m6 19 22 9 22-9M28 28v25"/>
+  <path fill="#71987C" d="M28 16C28 7 36 3 45 4c-2 8-8 13-17 12Z"/>
+  <path fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" d="m29 14 9-5"/>
+  <g font-family="Manrope, system-ui, sans-serif" font-weight="800">
+    <text x="64" y="34" fill="#26332B" font-size="34" letter-spacing="-1.1">Sulit<tspan fill="#245C43">Stock</tspan></text>
+    <text x="66" y="53" fill="#245C43" font-size="14" letter-spacing="3">MART</text>
+  </g>
+</svg>

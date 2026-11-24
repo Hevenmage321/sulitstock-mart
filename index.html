@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en-PH">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore sample wholesale food offers from local suppliers on SulitStock Mart, a Philippine procurement marketplace demonstration.">
+  <title>SulitStock Mart | Philippine Wholesale Food Marketplace</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/messaging.css">
+  <script type="module" src="assets/js/main.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <p class="announcement">Philippine wholesale food procurement <span>·</span> Marketplace demo</p>
+    <div class="wrap masthead">
+      <button class="menu-toggle icon-button" id="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation" aria-label="Menu">☰</button>
+      <a class="logo" href="index.html"><img src="assets/images/brand/logo.svg" alt="SulitStock Mart" width="270" height="60"></a>
+      <form class="search" role="search" action="products.html" method="get" id="marketplace-search">
+        <label class="sr-only" for="search">Search products and suppliers</label>
+        <input id="search" name="q" type="search" maxlength="160" placeholder="Search ingredients or suppliers">
+        <button class="button primary" type="submit">Search</button>
+      </form>
+      <div class="location">
+        <label for="buyer-location">Buyer location</label>
+        <select id="buyer-location"></select>
+      </div>
+      <a class="cart" href="cart.html" aria-label="Cart, 0 supplier offers">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M2 3h3l3 12h11l3-9H6"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
+        <span>Cart</span><span class="cart-count">0</span>
+      </a>
+    </div>
+    <nav id="navigation" class="site-nav" aria-label="Main navigation">
+      <div class="wrap nav-links">
+        <details id="category-menu">
+          <summary>All Categories</summary>
+          <div class="category-menu" id="category-menu-items"></div>
+        </details>
+        <a href="products.html">All Products</a>
+        <a href="suppliers.html">Suppliers</a>
+        <a href="#bulk-deals">Bulk Deals</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="orders.html">My Orders</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main" class="wrap" tabindex="-1">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <h1 id="hero-title">Buy more. Spend less.</h1>
+        <p>Source your restaurant essentials from local farmers, wholesalers, and distributors.</p>
+        <div class="hero-actions">
+          <a class="button hero-primary" href="products.html">Explore Products</a>
+          <a class="button hero-secondary" href="suppliers.html">Browse Suppliers</a>
+        </div>
+      </div>
+      <img src="assets/images/banners/market-harvest.jpg" alt="" width="1152" height="576" fetchpriority="high">
+    </section>
+
+    <section class="home-section" id="categories" aria-labelledby="category-title">
+      <header class="section-head">
+        <h2 id="category-title">Shop by category</h2>
+        <div class="scroll-controls">
+          <button class="icon-button" type="button" data-scroll="-1" aria-label="Scroll categories left" aria-controls="category-list">‹</button>
+          <button class="icon-button" type="button" data-scroll="1" aria-label="Scroll categories right" aria-controls="category-list">›</button>
+        </div>
+      </header>
+      <ul class="category-list" id="category-list"></ul>
+    </section>
+
+    <section class="home-section" id="products" aria-labelledby="products-title">
+      <header class="section-head"><h2 id="products-title">Popular wholesale ingredients</h2></header>
+      <p class="section-note">Sample offers · Prices in PHP · Distances are straight-line estimates.</p>
+      <div class="offer-grid" data-shelf="popular"></div>
+    </section>
+    <section class="home-section" id="meat" aria-labelledby="meat-title">
+      <header class="section-head">
+        <h2 id="meat-title">Fresh meat and poultry</h2>
+        <nav class="shelf-links" aria-label="Meat and poultry subcategories"><a href="products.html?category=meat&amp;subcategory=chicken">Chicken</a><a href="products.html?category=meat&amp;subcategory=pork">Pork</a></nav>
+      </header>
+      <div class="offer-grid" data-shelf="meat"></div>
+    </section>
+    <section class="home-section" id="produce" aria-labelledby="produce-title">
+      <header class="section-head"><h2 id="produce-title">Fresh vegetables and fruits</h2></header>
+      <div class="offer-grid" data-shelf="produce"></div>
+    </section>
+    <section class="home-section" id="grains" aria-labelledby="grains-title">
+      <header class="section-head"><h2 id="grains-title">Rice, grains, and dry goods</h2></header>
+      <div class="offer-grid" data-shelf="grains"></div>
+    </section>
+    <section class="home-section" id="pantry" aria-labelledby="pantry-title">
+      <header class="section-head"><h2 id="pantry-title">Pantry essentials</h2><p>Cooking oils, sauces, and seasonings</p></header>
+      <div class="offer-grid" data-shelf="pantry"></div>
+    </section>
+    <section class="home-section deals" id="bulk-deals" aria-labelledby="deals-title">
+      <header class="section-head"><h2 id="deals-title">Bulk purchasing deals</h2><p>Example offers with lower unit prices at larger quantities.</p></header>
+      <div class="offer-grid" data-shelf="deals"></div>
+    </section>
+    <section class="home-section" id="suppliers" aria-labelledby="suppliers-title">
+      <header class="section-head"><h2 id="suppliers-title">Featured local suppliers</h2><p>Fictional suppliers for this demo</p></header>
+      <div class="supplier-grid" id="supplier-list"></div>
+    </section>
+    <section class="home-section how" id="how-it-works" aria-labelledby="how-title">
+      <h2 id="how-title">How SulitStock Mart works</h2>
+      <ol class="steps">
+        <li><h3>Find your ingredients</h3><p>Browse by category to find staples for your kitchen.</p></li>
+        <li><h3>Compare supplier offers</h3><p>Check wholesale ranges, minimum orders, and estimated distances.</p></li>
+        <li><h3>Plan your purchase</h3><p>Choose offers that fit your kitchen’s volume and budget. This demo uses sample offers only.</p></li>
+      </ol>
+    </section>
+    <noscript><p class="no-script">Enable JavaScript to see sample categories, offers, and suppliers.</p></noscript>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div><img src="assets/images/brand/logo.svg" alt="SulitStock Mart" width="270" height="60"><p>Wholesale food sourcing for Philippine kitchens.</p></div>
+      <nav aria-label="Footer navigation"><a href="products.html">All Products</a><a href="suppliers.html">Suppliers</a><a href="#bulk-deals">Bulk Deals</a><a href="#how-it-works">How It Works</a></nav>
+      <p class="footer-note">Academic demonstration · Simulated orders and payments</p>
+    </div>
+  </footer>
+
+  <template id="offer-template">
+    <article class="offer">
+      <a class="offer-photo"><img width="360" height="270" alt=""><span class="image-fallback" hidden>Photo unavailable</span></a>
+      <div class="offer-body">
+        <h3><a class="text-button offer-name"></a></h3>
+        <p class="offer-price"><strong></strong> <span class="offer-unit"></span></p>
+        <p class="offer-minimum"></p>
+        <div class="offer-supplier"><strong></strong><p><span class="offer-city"></span> <span aria-hidden="true">·</span> <span class="offer-distance"></span></p></div>
+        <div class="offer-actions">
+          <a class="button primary" data-review-offer>Add to Cart</a>
+          <button class="text-button contact" type="button" data-demo="contact">Contact Supplier</button>
+        </div>
+      </div>
+    </article>
+  </template>
+</body>
+</html>

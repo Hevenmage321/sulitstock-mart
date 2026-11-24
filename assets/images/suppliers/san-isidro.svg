@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="brand-name">
+  <title id="brand-name">SAN ISIDRO PROVISIONS</title>
+  <circle cx="64" cy="64" r="64" fill="#22513D"/>
+  <circle cx="64" cy="64" r="56" fill="none" stroke="#F1C66F" stroke-opacity=".52" stroke-width="1.5"/>
+  <g transform="translate(19 2) scale(1.4)" fill="none" stroke="#F1C66F" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M19 30l13-9 13 9v15H19zM19 31l13 8 13-8M32 39v7"/><path d="M32 21v-6m0 4c5 0 7-3 7-5-4 0-6 2-7 5"/></g>
+  <path d="M43 76h42" stroke="#F1C66F" stroke-width="1" opacity=".65"/>
+  <text x="64" y="94" fill="white" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="15" letter-spacing=".65">SAN ISIDRO</text>
+  <text x="64" y="107" fill="#F1C66F" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="7.5" letter-spacing=".6">PROVISIONS</text>
+</svg>

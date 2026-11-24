@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en-PH">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Browse fictional Philippine food-service suppliers and their wholesale offers.">
+  <title>Supplier Directory | SulitStock Mart</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/messaging.css">
+  <link rel="stylesheet" href="assets/css/suppliers.css">
+  <script type="module" src="assets/js/suppliers-page.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <p class="announcement">Philippine wholesale food procurement <span>·</span> Marketplace demo</p>
+    <div class="wrap masthead">
+      <button class="menu-toggle icon-button" id="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation" aria-label="Menu">☰</button>
+      <a class="logo" href="index.html"><img src="assets/images/brand/logo.svg" alt="SulitStock Mart" width="270" height="60"></a>
+      <form class="search" role="search" action="products.html" method="get" id="marketplace-search">
+        <label class="sr-only" for="search">Search products and suppliers</label>
+        <input id="search" name="q" type="search" maxlength="160" placeholder="Search ingredients or suppliers">
+        <button class="button primary" type="submit">Search</button>
+      </form>
+      <div class="location">
+        <label for="buyer-location">Buyer location</label>
+        <select id="buyer-location"></select>
+      </div>
+      <a class="cart" href="cart.html" aria-label="Cart, 0 supplier offers">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M2 3h3l3 12h11l3-9H6"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
+        <span>Cart</span><span class="cart-count">0</span>
+      </a>
+    </div>
+    <nav id="navigation" class="site-nav" aria-label="Main navigation">
+      <div class="wrap nav-links">
+        <details id="category-menu">
+          <summary>All Categories</summary>
+          <div class="category-menu" id="category-menu-items"></div>
+        </details>
+        <a href="products.html">All Products</a>
+        <a href="suppliers.html" aria-current="page">Suppliers</a>
+        <a href="index.html#bulk-deals">Bulk Deals</a>
+        <a href="index.html#how-it-works">How It Works</a>
+        <a href="orders.html">My Orders</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main" class="wrap supplier-page" tabindex="-1">
+    <nav class="supplier-breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><span aria-current="page">Suppliers</span></nav>
+    <h1>Supplier Directory</h1>
+    <p class="supplier-muted">Find growers, market suppliers, wholesalers, and distributors for your kitchen. All businesses shown are fictional.</p>
+    <form id="supplier-filters" class="supplier-controls" role="search" aria-label="Filter suppliers">
+      <label class="supplier-search">Search suppliers<input name="q" type="search" maxlength="160" placeholder="Name, category, or location"></label>
+      <label>Supplier type<select name="type"><option value="">All supplier types</option></select></label>
+      <label>Product category<select name="category"><option value="">All categories</option></select></label>
+      <label>Distance<select name="distance"><option value="">Any distance</option><option value="5">Within 5 km</option><option value="15">Within 15 km</option><option value="30">Within 30 km</option></select></label>
+      <label>Delivery availability<select name="delivery"><option value="">All suppliers</option><option value="covered">Delivery available</option><option value="uncovered">Outside delivery coverage</option></select></label>
+      <label>Sort by<select name="sort"><option value="nearest">Nearest first</option><option value="farthest">Farthest first</option><option value="name">Supplier name A–Z</option><option value="type">Supplier type A–Z</option><option value="category">Primary category A–Z</option><option value="delivery">Delivery available first</option></select></label>
+      <button class="button supplier-outline" type="reset">Clear filters</button>
+    </form>
+    <div class="supplier-results-bar"><p id="supplier-count" role="status"></p><p id="distance-note" class="supplier-muted"></p></div>
+    <div id="supplier-results" class="directory-grid"></div>
+    <section id="supplier-empty" class="supplier-empty" hidden><h2>No suppliers found</h2><p>Try another search or clear the filters.</p></section>
+    <noscript><p>Enable JavaScript to browse the supplier directory.</p></noscript>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div><img src="assets/images/brand/logo.svg" alt="SulitStock Mart" width="270" height="60"><p>Wholesale food sourcing for Philippine kitchens.</p></div>
+      <nav aria-label="Footer navigation"><a href="products.html">All Products</a><a href="suppliers.html">Suppliers</a><a href="index.html#bulk-deals">Bulk Deals</a><a href="index.html#how-it-works">How It Works</a></nav>
+      <p class="footer-note">Academic demonstration · Simulated orders and payments</p>
+    </div>
+  </footer>
+
+</body>
+</html>

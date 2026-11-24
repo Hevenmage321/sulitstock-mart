@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="brand-name">
+  <title id="brand-name">PALENGKE BRIDGE SUPPLY</title>
+  <circle cx="64" cy="64" r="64" fill="#713F35"/>
+  <circle cx="64" cy="64" r="56" fill="none" stroke="#FFDCAC" stroke-opacity=".52" stroke-width="1.5"/>
+  <g transform="translate(19 2) scale(1.4)" fill="none" stroke="#FFDCAC" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M16 28l4-9h24l4 9v3H16zm4 3v15h24V31M27 46V35h10v11M26 19l-2 9m14-9 2 9"/></g>
+  <path d="M43 76h42" stroke="#FFDCAC" stroke-width="1" opacity=".65"/>
+  <text x="64" y="94" fill="white" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="17" letter-spacing="1.1">PALENGKE</text>
+  <text x="64" y="107" fill="#FFDCAC" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="7.5" letter-spacing=".6">BRIDGE SUPPLY</text>
+</svg>

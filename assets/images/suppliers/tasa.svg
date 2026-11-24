@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="brand-name">
+  <title id="brand-name">TASA CORNER PROVISIONS</title>
+  <circle cx="64" cy="64" r="64" fill="#684C39"/>
+  <circle cx="64" cy="64" r="56" fill="none" stroke="#F9D9AA" stroke-opacity=".52" stroke-width="1.5"/>
+  <g transform="translate(19 2) scale(1.4)" fill="none" stroke="#F9D9AA" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M17 28h25v8a11 11 0 0 1-11 11h-3a11 11 0 0 1-11-11zm25 2h4a5 5 0 0 1 0 10h-6M23 22c-3-3 3-4 1-7m8 7c-3-3 3-4 1-7"/></g>
+  <path d="M43 76h42" stroke="#F9D9AA" stroke-width="1" opacity=".65"/>
+  <text x="64" y="94" fill="white" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="15" letter-spacing=".65">TASA CORNER</text>
+  <text x="64" y="107" fill="#F9D9AA" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="7.5" letter-spacing=".6">PROVISIONS</text>
+</svg>
